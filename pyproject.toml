@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "iguane"
+version = "0.1.0"
+description = "A tool to explore Figures-of-Merit for some GPUs"
+authors = ["Olexa Bilaniuk"]
+readme = "README.md"
+include = [ "iguane.py" ]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
