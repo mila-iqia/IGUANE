@@ -3,8 +3,7 @@ import json
 
 
 # Import RAWDATA (a dictionary mapping GPU name to GPU flops and data) from a resource file
-with importlib.resources.files("iguane").joinpath("gpuflops.json").open() as file:
-    RAWDATA = json.load(file)
+RAWDATA = json.loads(importlib.resources.read_text("iguane", "gpuflops.json"))
 
 
 UGR_VERSIONS = {
