@@ -1,5 +1,5 @@
-from types import SimpleNamespace
 import pytest
+from types import SimpleNamespace
 from iguane.fom import fom_ugr, RAWDATA
 import json
 

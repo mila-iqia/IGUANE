@@ -2,6 +2,7 @@ import importlib.resources
 import json
 
 
+# Import RAWDATA (a dictionary mapping GPU name to GPU flops and data) from a resource file
 with importlib.resources.files("iguane").joinpath("gpuflops.json").open() as file:
     RAWDATA = json.load(file)
 
@@ -15,6 +16,7 @@ UGR_VERSIONS = {
 
 
 class FigureOfMerit(dict):
+    """Helper subclass of dict to register FOM functions"""
     def __call__(self, f):
         globals().setdefault('FOM', {})
         assert f.__name__.startswith('fom_') and f.__name__ != 'fom_', \
