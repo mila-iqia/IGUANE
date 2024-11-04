@@ -38,47 +38,43 @@ UGR_VERSIONS = {
 }
 
 
-class FigureOfMerit(dict):
-    """Helper subclass of dict to register FOM functions"""
-    def __call__(self, f):
-        globals().setdefault('FOM', {})
-        assert f.__name__.startswith('fom_') and f.__name__ != 'fom_', \
-            'Figure-of-Merit function names must start with "fom_"!'
-        self[f.__name__[4:]] = f
-        return f
+def fom(f):
+    globals().setdefault('FOM', {})
+    assert f.__name__.startswith('fom_') and f.__name__ != 'fom_', \
+           'Figure-of-Merit function names must start with "fom_"!'
+    FOM[f.__name__[4:]] = f
+    return f
 
 
-FOM = FigureOfMerit()
 
-
-@FOM
+@fom
 def fom_count(name, *, args=None):
     return 1
 
 
-@FOM
+@fom
 def fom_fp16(name, *, args=None):
     data = RAWDATA[name]
     return data['fp16'] or data['fp32']
 
 
-@FOM
+@fom
 def fom_fp32(name, *, args=None):
     return RAWDATA[name]['fp32']
 
 
-@FOM
+@fom
 def fom_fp64(name, *, args=None):
     return RAWDATA[name]['fp64']
 
 
-@FOM
+@fom
 def fom_tf32(name, *, args=None):
     data = RAWDATA[name]
     return data['tf32'] or data['fp32']
 
 
-@FOM
+@fom
 def fom_ugr(name, *, args=None):
     weights = UGR_VERSIONS[args.ugr_version if args else "1.0"]
     ref  = RAWDATA['A100-SXM4-40GB']
@@ -88,7 +84,7 @@ def fom_ugr(name, *, args=None):
     return sum([w * (data[k] / ref[k]) for k, w in weights.items()])
 
 
-@FOM
+@fom
 def fom_iguane(name, *, args=None):
     ref  = RAWDATA['A100-SXM4-80GB']
     data = RAWDATA[name].copy()
