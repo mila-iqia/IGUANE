@@ -6,7 +6,7 @@ Supported FoMs:
 
 *Examples*:
 
-    $ ./iguane.py -sr
+    $ python iguane -sr
      2.59 H100-SXM5-80GB
      2.43 H100-NVL-94GB
      1.96 H100-PCIe-80GB
@@ -26,7 +26,7 @@ Supported FoMs:
      0.25 P100-PCIe-16GB
      0.22 P100-PCIe-12GB
      0.21 T4
-    $ ./iguane.py -pd": "
+    $ pyton iguane -pd": "
     P100-PCIe-12GB: 0.22040341999886826
     P100-PCIe-16GB: 0.2539403974908297
     P100-SXM2-16GB: 0.2702130531251874
@@ -46,7 +46,7 @@ Supported FoMs:
     H100-PCIe-80GB: 1.9579954847095848
     H100-SXM5-80GB: 2.586680957484816
     H100-NVL-94GB: 2.4280983913222136
-    $ ./iguane.py -jsru rgu
+    $ python iguane -jsru rgu
     {
       "H100-SXM5-80GB": 12.168321513002363,
       "H100-NVL-94GB": 11.091546985815604,
@@ -68,9 +68,9 @@ Supported FoMs:
       "P100-PCIe-16GB": 1.182505910165485,
       "P100-PCIe-12GB": 1.1025059101654848
     }
-    $ ./iguane.py -i mila.json
+    $ python iguane -i mila.json
     5886.69
-    $ ./iguane.py -sji mila.json
+    $ python iguane -sji mila.json
     {
       "breakdown": {
         "A6000": 39.453049645390074,
