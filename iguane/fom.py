@@ -1,33 +1,15 @@
 import importlib.resources
 import json
 import re
+try:
+    import tomllib
+except ModuleNotFoundError:
+    # for Python before 3.11
+    import pip._vendor.tomli as tomllib
 
 
 # Import RAWDATA (a dictionary mapping GPU name to GPU flops and data) from a resource file
-def _get_raw_data():
-    with importlib.resources.open_text("iguane", "rawdata.txt") as file:
-        content = ""
-        # Format text file to a JSON valid content
-        for line in file:
-            # Remove comments at end of line
-            line = re.sub(r"#.+$", "", line)
-            # Replace dict(...) with {...}
-            line = re.sub(r"dict\(([^)]+)\)", r"{\1}", line)
-            # Replace key=None with "key": null
-            line = re.sub(r"([a-zA-Z0-9_]+) *= *None", r'"\1": null', line)
-            # Replace key=value with "key": value
-            line = re.sub(r"([a-zA-Z0-9_]+) *= *([a-zA-Z0-9-_.'\"]+)", r'"\1": \2', line)
-            # Replace 'string' (single quotes) with "string" (double quotes)
-            line = re.sub(r"'([^']+)'", r'"\1"', line)
-            # Make sure line ends only with a "\n" blank character
-            content += line.rstrip() + "\n"
-        # Replace trailing ",}" (invalid in JSON) with just "}"
-        content = re.sub(r",\n?}\n$", "\n}", content)
-        # Finally, parse JSON
-        return json.loads(content)
-
-
-RAWDATA = _get_raw_data()
+RAWDATA = tomllib.loads(importlib.resources.read_text("iguane", "rawdata.toml"))
 
 
 UGR_VERSIONS = {
