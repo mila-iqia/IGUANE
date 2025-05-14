@@ -25,11 +25,14 @@ FIELDS = [
 #   v1.0 is equivalent to RGU/UGR:
 #   https://docs.alliancecan.ca/wiki/Allocations_and_compute_scheduling
 #
+# fmt: off
 FOM_VERSIONS = {
-    '1.0':    { 'ref': 'A100-SXM4-40GB', 'fp16': 1.6, 'fp32': 1.6,              'memgb': 0.8                 },
-    '2.0-0':  { 'ref': 'A100-SXM4-80GB', 'fp16': 0.2, 'fp32': 0.1, 'tf32': 0.2, 'memgb': 0.25, 'membw': 0.25 },
-    'iguane': { 'ref': 'A100-SXM4-80GB', 'fp16': 0.2, 'fp32': 0.2, 'tf32': 0.2, 'memgb': 0.2,  'membw': 0.2  },
+    '1.0':      { 'ref': 'A100-SXM4-40GB', 'fp16': 1.6, 'fp32': 1.6,              'memgb': 0.8                 },
+    '2.0-0':    { 'ref': 'A100-SXM4-80GB', 'fp16': 0.2, 'fp32': 0.1, 'tf32': 0.2, 'memgb': 0.25, 'membw': 0.25 },
+    '2.0':      { 'ref': 'A100-SXM4-80GB', 'fp16': 0.2, 'fp32': 0.1, 'tf32': 0.2, 'memgb': 0.25, 'membw': 0.25 },
+    'iguane-0': { 'ref': 'A100-SXM4-80GB', 'fp16': 0.2, 'fp32': 0.2, 'tf32': 0.2, 'memgb': 0.2,  'membw': 0.2  },
 }
+# fmt: on
 _CURRENT_FOM_VERSION = '1.0'
 FOM_VERSIONS['ugr'] = FOM_VERSIONS[_CURRENT_FOM_VERSION]
 
