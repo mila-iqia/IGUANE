@@ -101,7 +101,7 @@
 #                     FP32: 1590e6*2560*2/1e12        =   8.1408  TFLOPS (1 FP32 FMA per CUDA Core)
 #                     FP64: 1590e6*40*2*2/1e12        =   0.2544  TFLOPS (2 FP64 FMA ALUs per SM, 1:32 of FP32)
 #                     FP16: 1590e6*320*(4*4*4)*2/1e12 =  65.1264  TFLOPS (320 Tensor Cores contracting 4x4x4 FP16 FMAs/clock cycle; no gains from sparsity available)
-#     RTX8000:        Die TU102, fully enabled (72 SMs x 8 2nd-gen Tensor Cores) @ Boost Clock 1770 MHz
+#     RTX6000/8000:   Die TU102, fully enabled (72 SMs x 8 2nd-gen Tensor Cores) @ Boost Clock 1770 MHz
 #                     FP32: 1770e6*4608*2/1e12        =  16.31232 TFLOPS (1 FP32 FMA per CUDA Core)
 #                     FP64: 1770e6*72*2*2/1e12        =   0.50976 TFLOPS (2 FP64 FMA ALUs per SM, 1:32 of FP32)
 #                     FP16: 1770e6*576*(4*4*4)*2/1e12 = 130.49856 TFLOPS (576 Tensor Cores contracting 4x4x4 FP16 FMAs/clock cycle; no gains from sparsity available)
@@ -207,6 +207,7 @@ RTX-2080-Super  = {fp16=  89.210880, fp32= 11.151360, fp64=  0.348480, tf32=    
 RTX-2080-Ti     = {fp16= 107.581440, fp32= 13.447680, fp64=  0.420240, tf32=      false, memgb= 11,  membw=  616, tdp= 250, reldate="2018-09-27"}
 TITAN-RTX       = {fp16= 130.498560, fp32= 16.312320, fp64=  0.509760, tf32=      false, memgb= 24,  membw=  672, tdp= 280, reldate="2018-12-18"}
 T4              = {fp16=  65.126400, fp32=  8.140800, fp64=  0.254400, tf32=      false, memgb= 16,  membw=  300, tdp=  70, reldate="2018-09-12"}
+RTX6000         = {fp16= 130.498560, fp32= 16.312320, fp64=  0.509760, tf32=      false, memgb= 24,  membw=  672, tdp= 260, reldate="2018-08-13"}
 RTX8000         = {fp16= 130.498560, fp32= 16.312320, fp64=  0.509760, tf32=      false, memgb= 48,  membw=  672, tdp= 260, reldate="2018-08-13"}
 A100-PCIe-40GB  = {fp16= 311.869440, fp32= 19.491840, fp64=  9.745920, tf32= 155.934720, memgb= 40,  membw= 1555, tdp= 250, reldate="2020-05-14"}
 A100-PCIe-80GB  = {fp16= 311.869440, fp32= 19.491840, fp64=  9.745920, tf32= 155.934720, memgb= 80,  membw= 1555, tdp= 250, reldate="2021-06-28"}
