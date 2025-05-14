@@ -33,7 +33,7 @@ FOM_VERSIONS = {
     'iguane-0': { 'ref': 'A100-SXM4-80GB', 'fp16': 0.2, 'fp32': 0.2, 'tf32': 0.2, 'memgb': 0.2,  'membw': 0.2  },
 }
 # fmt: on
-_CURRENT_FOM_VERSION = '2.0'
+_CURRENT_FOM_VERSION = '1.0'
 FOM_VERSIONS['ugr'] = FOM_VERSIONS[_CURRENT_FOM_VERSION]
 
 
