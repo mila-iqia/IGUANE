@@ -235,6 +235,14 @@
 #             FP16: 2100e6*1216*(32*32*8/32)*2/1e12 = 1307.4432 TFLOPS (1216 matrix cores contracting 32x32x8 FP16 FMAs/32 clock cycles @ 0% sparsity, V_MFMA_F32_32X32X8_F16)
 #             TF32: 2100e6*1216*(32*32*4/32)*2/1e12 =  653.7216 TFLOPS (1216 matrix cores contracting 32x32x4 TF32 FMAs/32 clock cycles @ 0% sparsity, V_MFMA_F32_32X32X4_XF32, 1:2 of FP16)
 #     MI325X: (Identical to MI300X, except bigger (256GB HBM3e) memory clocked faster (6.0 GT/s))
+# https://www.amd.com/content/dam/amd/en/documents/instinct-tech-docs/data-sheets/amd-instinct-mi300a-data-sheet.pdf
+#     MI300A: CDNA3 Architecture APU, 228 CUs (228 x 64 = 14592 stream cores, 228 x 4 = 912 matrix cores) @ Max Clock 2100 MHz,
+#             same per-CU throughput as MI300X (see ISA document above), 128GB HBM3 (8192-bit @ 5.2 GT/s = 5324.8 GB/s, same as MI300X)
+#             FP32: 2100e6*14592*2*2/1e12           =  122.5728 TFLOPS (2 FP32 FMA per stream core (dual-issued))
+#             FP64: 2100e6*14592*1*2/1e12           =   61.2864 TFLOPS (1 FP64 FMA per stream core (single-issued), 1:2 of FP32)
+#             FP16: 2100e6*912*(32*32*8/32)*2/1e12  =  980.5824 TFLOPS (912 matrix cores contracting 32x32x8 FP16 FMAs/32 clock cycles @ 0% sparsity, V_MFMA_F32_32X32X8_F16)
+#             TF32: 2100e6*912*(32*32*4/32)*2/1e12  =  490.2912 TFLOPS (912 matrix cores contracting 32x32x4 TF32 FMAs/32 clock cycles @ 0% sparsity, V_MFMA_F32_32X32X4_XF32, 1:2 of FP16)
+#             Max TDP: 760W liquid-cooled only (550W with air or liquid cooling; the max is kept, as for MI300X's 750W max TBP)
 #
 
 
@@ -278,5 +286,6 @@ RTX-5080                                   = {fp16= 112.551936, fp32= 56.275968,
 RTX-5090                                   = {fp16= 209.505280, fp32=104.752640, fp64=  1.636760, tf32= 104.752640, memgb= 32,  membw= 1792, tdp= 575, reldate="2025-01-30"}
 
 # AMD
+MI300A                                     = {fp16= 980.582400, fp32=122.572800, fp64= 61.286400, tf32= 490.291200, memgb=128,  membw= 5325, tdp= 760, reldate="2023-12-06"}
 MI300X                                     = {fp16=1307.443200, fp32=163.430400, fp64= 81.715200, tf32= 653.721600, memgb=192,  membw= 5325, tdp= 750, reldate="2023-12-06"}
 MI325X                                     = {fp16=1307.443200, fp32=163.430400, fp64= 81.715200, tf32= 653.721600, memgb=256,  membw= 6144, tdp=1000, reldate="2024-10-10"}
